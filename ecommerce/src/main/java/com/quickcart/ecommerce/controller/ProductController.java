@@ -77,6 +77,22 @@ public class ProductController {
     //save product to database
     productService.saveProduct(product);
     return "redirect:/products/list";
-}
+    }
+
+    @GetMapping("/showFormForUpdate/{id}")
+    public String showFormForUpdate(@PathVariable int id, Model model) {
+        Product product = productService.getProductById(id);
+        //set product as a model attribute to pre-populate the form
+        model.addAttribute("product", product);
+        return "update-product";
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable int id) {
+        //call delete employee method from service
+        this.productService.deleteProductById(id);
+        return "redirect:/products/list";
+    }
+
 }
 

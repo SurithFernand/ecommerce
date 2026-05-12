@@ -18,6 +18,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -25,11 +26,13 @@
             <td th:text="${product.id}"></td>
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td>
+            <td><a th:href="@{/products/showFormForUpdate/{id}(id=${product.id})}" class="button">Update</a>
+                <a th:href="@{/products/deleteProduct/{id}(id=${product.id})}" class="button">Delete</a></td>
         </tr>
         </tbody>
 </table>
 
-<a th:href="@{/products/add}" class="button">Add Menu Item</a>
+<a class="button" th:href="@{/products/add}">Add Menu Item</a>
 
 </body>
 </html>
